@@ -17,9 +17,9 @@ namespace TicTacToeWinF
             {
                 WriteIndented = true,
             };
-            jsonString = System.Text.Json.JsonSerializer.Serialize(area, options);
+            //jsonString = System.Text.Json.JsonSerializer.Serialize(area, options);
 
-            File.WriteAllText(GetGameFile(), jsonString);
+            //File.WriteAllText(GetGameFile(), jsonString);
         }
 
         public static void LFF() //GameArea LoadFromFile()

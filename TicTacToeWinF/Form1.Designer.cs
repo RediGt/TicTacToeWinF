@@ -83,7 +83,7 @@
             this.pctBox1.Size = new System.Drawing.Size(193, 194);
             this.pctBox1.TabIndex = 0;
             this.pctBox1.TabStop = false;
-            this.pctBox1.Click += new System.EventHandler(this.pctBox1_Click);
+            this.pctBox1.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox2
             // 
@@ -93,6 +93,7 @@
             this.pctBox2.Size = new System.Drawing.Size(193, 194);
             this.pctBox2.TabIndex = 1;
             this.pctBox2.TabStop = false;
+            this.pctBox2.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox3
             // 
@@ -102,6 +103,7 @@
             this.pctBox3.Size = new System.Drawing.Size(196, 194);
             this.pctBox3.TabIndex = 2;
             this.pctBox3.TabStop = false;
+            this.pctBox3.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox4
             // 
@@ -111,6 +113,7 @@
             this.pctBox4.Size = new System.Drawing.Size(193, 194);
             this.pctBox4.TabIndex = 3;
             this.pctBox4.TabStop = false;
+            this.pctBox4.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox5
             // 
@@ -120,6 +123,7 @@
             this.pctBox5.Size = new System.Drawing.Size(193, 194);
             this.pctBox5.TabIndex = 4;
             this.pctBox5.TabStop = false;
+            this.pctBox5.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox6
             // 
@@ -129,6 +133,7 @@
             this.pctBox6.Size = new System.Drawing.Size(196, 194);
             this.pctBox6.TabIndex = 5;
             this.pctBox6.TabStop = false;
+            this.pctBox6.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox7
             // 
@@ -138,6 +143,7 @@
             this.pctBox7.Size = new System.Drawing.Size(193, 195);
             this.pctBox7.TabIndex = 6;
             this.pctBox7.TabStop = false;
+            this.pctBox7.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox8
             // 
@@ -147,6 +153,7 @@
             this.pctBox8.Size = new System.Drawing.Size(193, 195);
             this.pctBox8.TabIndex = 7;
             this.pctBox8.TabStop = false;
+            this.pctBox8.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // pctBox9
             // 
@@ -156,6 +163,7 @@
             this.pctBox9.Size = new System.Drawing.Size(196, 195);
             this.pctBox9.TabIndex = 8;
             this.pctBox9.TabStop = false;
+            this.pctBox9.Click += new System.EventHandler(this.pctBox_Click);
             // 
             // Form1
             // 
