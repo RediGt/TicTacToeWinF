@@ -15,6 +15,19 @@ namespace TicTacToeWinF
         public Form1()
         {
             InitializeComponent();
+            InitializeGrid();
+
+        }
+
+        private void InitializeGrid()
+        {
+            tblPanelGrid.BackColor = Color.LavenderBlush;
+            tblPanelGrid.CellBorderStyle = TableLayoutPanelCellBorderStyle.InsetDouble;
+        }
+
+        private void pctBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

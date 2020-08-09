@@ -83,6 +83,7 @@
             this.pctBox1.Size = new System.Drawing.Size(193, 194);
             this.pctBox1.TabIndex = 0;
             this.pctBox1.TabStop = false;
+            this.pctBox1.Click += new System.EventHandler(this.pctBox1_Click);
             // 
             // pctBox2
             // 
