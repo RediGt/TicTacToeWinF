@@ -38,6 +38,10 @@
             this.pctBox3 = new System.Windows.Forms.PictureBox();
             this.pctBox2 = new System.Windows.Forms.PictureBox();
             this.pctBox1 = new System.Windows.Forms.PictureBox();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnLoad = new System.Windows.Forms.Button();
+            this.BtnExit = new System.Windows.Forms.Button();
             this.tblPanelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBox8)).BeginInit();
@@ -184,14 +188,65 @@
             this.pctBox1.TabStop = false;
             this.pctBox1.Click += new System.EventHandler(this.pctBox_Click);
             // 
+            // btnNew
+            // 
+            this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.Location = new System.Drawing.Point(999, 101);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(245, 54);
+            this.btnNew.TabIndex = 1;
+            this.btnNew.Text = "New Game";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(999, 161);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(245, 54);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLoad.Location = new System.Drawing.Point(999, 221);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(245, 54);
+            this.btnLoad.TabIndex = 3;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // BtnExit
+            // 
+            this.BtnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnExit.Location = new System.Drawing.Point(999, 281);
+            this.BtnExit.Name = "BtnExit";
+            this.BtnExit.Size = new System.Drawing.Size(245, 54);
+            this.BtnExit.TabIndex = 4;
+            this.BtnExit.Text = "Exit";
+            this.BtnExit.UseVisualStyleBackColor = true;
+            this.BtnExit.Click += new System.EventHandler(this.BtnExit_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1326, 925);
+            this.Controls.Add(this.BtnExit);
+            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnNew);
             this.Controls.Add(this.tblPanelGrid);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "TicTacToe";
             this.tblPanelGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pctBox9)).EndInit();
@@ -219,6 +274,10 @@
         private System.Windows.Forms.PictureBox pctBox3;
         private System.Windows.Forms.PictureBox pctBox2;
         private System.Windows.Forms.PictureBox pctBox1;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button BtnExit;
     }
 }
 

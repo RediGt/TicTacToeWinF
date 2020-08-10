@@ -18,6 +18,7 @@ namespace TicTacToeWinF
         {
             InitializeComponent();
             InitializeGrid();
+            pd.InitGameMoves();
             InitializeCells();
         }      
 
@@ -30,17 +31,16 @@ namespace TicTacToeWinF
         private void InitializeCells()
         {
             string cellName;
-            pd.InitGameMoves();
             for (int i = 0; i < 9; i++)
             {
                 cellName = "pctBox" + (i + 1);
                 if (pd.GameMoves[i] == CellType.Cross)
                 {
-                    tblPanelGrid.Controls[cellName].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame_020");
+                    tblPanelGrid.Controls[cellName].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame");
                 }
                 if (pd.GameMoves[i] == CellType.Nought)
                 {
-                    tblPanelGrid.Controls[cellName].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame_020");
+                    tblPanelGrid.Controls[cellName].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame");
                 }
                 if (pd.GameMoves[i] == CellType.Free)
                 {
@@ -74,8 +74,7 @@ namespace TicTacToeWinF
                 pd.playerXTurn = !pd.playerXTurn;
 
                 CheckForWin();
-                //Check_For_Draw();
-                //xPlayerTurn = !xPlayerTurn;
+                CheckForDraw();
             }
         }
 
@@ -108,7 +107,7 @@ namespace TicTacToeWinF
             }
             if (pd.GameMoves[2] == pd.GameMoves[5] && pd.GameMoves[2] == pd.GameMoves[8] && pd.GameMoves[2] != CellType.Free)
             {
-                ChangeCellsColors(pctBox3, pctBox6, pctBox8, Color.DeepPink);
+                ChangeCellsColors(pctBox3, pctBox6, pctBox9, Color.DeepPink);
                 GameOver();
             }
             if (pd.GameMoves[0] == pd.GameMoves[4] && pd.GameMoves[0] == pd.GameMoves[8] && pd.GameMoves[0] != CellType.Free)
@@ -123,22 +122,33 @@ namespace TicTacToeWinF
             }
         }
 
+        private void CheckForDraw()
+        {
+            if (pd.playerTurnCount == 9)
+            {
+                MessageBox.Show("No Winner. DRAW");
+            }
+        }
+
         private void GameOver()
         {
             string winner;
             if (pd.playerXTurn)
-                winner = "X";
-            else
                 winner = "O";
-            //WinnerCellsChangeColor();
+            else
+                winner = "X";
             PlaySound("WinnerSound");
             DisableButtonClick();
-            //MessageBox.Show("Congrats, " + winner);
-            //this.Hide();
-            //Form2 f2 = new Form2();
-            //f2.ShowDialog();
-            //this.Close();
-            //RestartGame();
+            MessageBox.Show("Congrats, " + winner);
+        }
+
+        private void NewGame()
+        {
+            pd.InitGameMoves();
+            InitializeCells();
+            EnableButtonClick();
+            pd.playerTurnCount = 0;
+            pd.playerXTurn = true;
         }
 
         private void ChangeCellsColors(PictureBox labelOne, PictureBox labelTwo, PictureBox labelThree, Color color)
@@ -177,6 +187,35 @@ namespace TicTacToeWinF
                 picture = (PictureBox)tblPanelGrid.Controls[cellName];
                 picture.Click += this.pctBox_Click;
             }
+        }
+
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            NewGame();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            FileIO.SaveToFile(pd);
+            MessageBox.Show("Game saved");
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            pd = FileIO.LoadFromFile();
+            if (pd == null)
+            {
+                MessageBox.Show("Error loading the game. A new game is created.");
+                pd = new PlayData();
+                NewGame();
+                return;
+            }
+            InitializeCells();
         }
     }
 }

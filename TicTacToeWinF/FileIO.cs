@@ -10,19 +10,19 @@ namespace TicTacToeWinF
 {
     class FileIO
     {
-        public static void SaveToFile()//GameArea area)
+        public static void SaveToFile(PlayData pd)
         {
             string jsonString;
             var options = new JsonSerializerOptions
             {
                 WriteIndented = true,
             };
-            //jsonString = System.Text.Json.JsonSerializer.Serialize(area, options);
+            jsonString = System.Text.Json.JsonSerializer.Serialize(pd, options);
 
-            //File.WriteAllText(GetGameFile(), jsonString);
+            File.WriteAllText(GetGameFile(), jsonString);
         }
 
-        public static void LFF() //GameArea LoadFromFile()
+        public static PlayData LoadFromFile()
         {
             try
             {
@@ -37,12 +37,11 @@ namespace TicTacToeWinF
                 }
                 reader.Close();
 
-                //return System.Text.Json.JsonSerializer.Deserialize<GameArea>(json);
+                return System.Text.Json.JsonSerializer.Deserialize<PlayData>(json);
             }
             catch
             {
-                Console.WriteLine("Error loading the game. A new game is created.");
-                //return null;
+                return null;
             }
         }
 
