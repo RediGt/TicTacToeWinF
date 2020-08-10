@@ -12,7 +12,7 @@ namespace TicTacToeWinF
 {
     public partial class Form1 : Form
     {
-        GameFlow gf = new GameFlow();
+        PlayData pd = new PlayData();
         
         public Form1()
         {
@@ -30,22 +30,23 @@ namespace TicTacToeWinF
         private void InitializeCells()
         {
             string cellName;
-            gf.InitGameMoves();
+            pd.InitGameMoves();
             for (int i = 0; i < 9; i++)
             {
                 cellName = "pctBox" + (i + 1);
-                if (gf.GameMoves[i] == CellType.Cross)
+                if (pd.GameMoves[i] == CellType.Cross)
                 {
                     tblPanelGrid.Controls[cellName].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame_020");
                 }
-                if (gf.GameMoves[i] == CellType.Nought)
+                if (pd.GameMoves[i] == CellType.Nought)
                 {
                     tblPanelGrid.Controls[cellName].BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame_020");
                 }
-                if (gf.GameMoves[i] == CellType.Free)
+                if (pd.GameMoves[i] == CellType.Free)
                 {
                     tblPanelGrid.Controls[cellName].BackgroundImage = null;
                 }
+                tblPanelGrid.Controls[cellName].BackColor = Color.Transparent;
             }
         }
 
@@ -55,27 +56,95 @@ namespace TicTacToeWinF
             string cellNumber = picture.Name.Substring(6, 1);
             int cellNum = Convert.ToInt32(cellNumber);
 
-            if (gf.GameMoves[cellNum - 1] == CellType.Free)
+            if (pd.GameMoves[cellNum - 1] == CellType.Free)
             {
-                if (gf.playerXTurn)
+                if (pd.playerXTurn)
                 {
-                    gf.GameMoves[cellNum - 1] = CellType.Cross;
+                    pd.GameMoves[cellNum - 1] = CellType.Cross;
                     picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame_020");
                     PlaySound("ClickSound");
                 }
                 else
                 {
-                    gf.GameMoves[cellNum - 1] = CellType.Nought;
+                    pd.GameMoves[cellNum - 1] = CellType.Nought;
                     picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame_020");
                     PlaySound("ClickSound2");
                 }
-                gf.playerTurnCount++;
-                gf.playerXTurn = !gf.playerXTurn;
+                pd.playerTurnCount++;
+                pd.playerXTurn = !pd.playerXTurn;
 
-                gf.CheckForWin();
+                CheckForWin();
                 //Check_For_Draw();
                 //xPlayerTurn = !xPlayerTurn;
             }
+        }
+
+        public void CheckForWin()
+        {
+            if (pd.GameMoves[0] == pd.GameMoves[1] && pd.GameMoves[0] == pd.GameMoves[2] && pd.GameMoves[0] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox1, pctBox2, pctBox3, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[3] == pd.GameMoves[4] && pd.GameMoves[3] == pd.GameMoves[5] && pd.GameMoves[3] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox4, pctBox5, pctBox6, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[6] == pd.GameMoves[7] && pd.GameMoves[6] == pd.GameMoves[8] && pd.GameMoves[6] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox7, pctBox8, pctBox9, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[0] == pd.GameMoves[3] && pd.GameMoves[0] == pd.GameMoves[6] && pd.GameMoves[0] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox1, pctBox4, pctBox7, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[1] == pd.GameMoves[4] && pd.GameMoves[1] == pd.GameMoves[7] && pd.GameMoves[1] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox2, pctBox5, pctBox8, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[2] == pd.GameMoves[5] && pd.GameMoves[2] == pd.GameMoves[8] && pd.GameMoves[2] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox3, pctBox6, pctBox8, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[0] == pd.GameMoves[4] && pd.GameMoves[0] == pd.GameMoves[8] && pd.GameMoves[0] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox1, pctBox5, pctBox9, Color.DeepPink);
+                GameOver();
+            }
+            if (pd.GameMoves[2] == pd.GameMoves[4] && pd.GameMoves[2] == pd.GameMoves[6] && pd.GameMoves[2] != CellType.Free)
+            {
+                ChangeCellsColors(pctBox3, pctBox5, pctBox7, Color.DeepPink);
+                GameOver();
+            }
+        }
+
+        private void GameOver()
+        {
+            string winner;
+            if (pd.playerXTurn)
+                winner = "X";
+            else
+                winner = "O";
+            //WinnerCellsChangeColor();
+            Form1.PlaySound("WinnerSound");
+            //MessageBox.Show("Congrats, " + winner);
+            //this.Hide();
+            //Form2 f2 = new Form2();
+            //f2.ShowDialog();
+            //this.Close();
+            //RestartGame();
+        }
+
+        private void ChangeCellsColors(PictureBox labelOne, PictureBox labelTwo, PictureBox labelThree, Color color)
+        {
+            labelOne.BackColor = color;
+            labelTwo.BackColor = color;
+            labelThree.BackColor = color;
         }
 
         static public void PlaySound(string soundName)
