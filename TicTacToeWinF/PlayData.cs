@@ -13,7 +13,7 @@ namespace TicTacToeWinF
         }
         
         public bool PlayerXTurn { get; set; } = true;
-        public bool WinResult { get; set; } = true;
+        public bool WinResult { get; set; } = false;
         public int PlayerTurnCount { get; set; } = 0;
         public CellType[] GameMoves { get; set; } = new CellType[9];
     

@@ -74,7 +74,8 @@ namespace TicTacToeWinF
                 pd.PlayerXTurn = !pd.PlayerXTurn;
 
                 CheckForWin();
-                CheckForDraw();
+                if (!pd.WinResult)
+                    CheckForDraw();
             }
         }
 
@@ -137,6 +138,7 @@ namespace TicTacToeWinF
                 winner = "O";
             else
                 winner = "X";
+            pd.WinResult = true;
             PlaySound("WinnerSound");
             DisableButtonClick();
             MessageBox.Show("Congrats, " + winner);
@@ -149,6 +151,7 @@ namespace TicTacToeWinF
             EnableButtonClick();
             pd.PlayerTurnCount = 0;
             pd.PlayerXTurn = true;
+            pd.WinResult = false;
         }
 
         private void ChangeCellsColors(PictureBox labelOne, PictureBox labelTwo, PictureBox labelThree, Color color)
@@ -216,6 +219,7 @@ namespace TicTacToeWinF
                 return;
             }
             InitializeCells();
+            EnableButtonClick();
         }
     }
 }
