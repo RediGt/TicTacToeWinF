@@ -81,6 +81,16 @@ namespace TicTacToeWinF.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap o_frame {
+            get {
+                object obj = ResourceManager.GetObject("o_frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap o_frame_020 {
             get {
                 object obj = ResourceManager.GetObject("o_frame_020", resourceCulture);
@@ -94,6 +104,16 @@ namespace TicTacToeWinF.Properties {
         internal static System.IO.UnmanagedMemoryStream WinnerSound {
             get {
                 return ResourceManager.GetStream("WinnerSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap x_frame {
+            get {
+                object obj = ResourceManager.GetObject("x_frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

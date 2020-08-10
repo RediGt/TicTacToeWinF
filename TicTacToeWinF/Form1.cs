@@ -61,13 +61,13 @@ namespace TicTacToeWinF
                 if (pd.playerXTurn)
                 {
                     pd.GameMoves[cellNum - 1] = CellType.Cross;
-                    picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame_020");
+                    picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame");
                     PlaySound("ClickSound");
                 }
                 else
                 {
                     pd.GameMoves[cellNum - 1] = CellType.Nought;
-                    picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame_020");
+                    picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame");
                     PlaySound("ClickSound2");
                 }
                 pd.playerTurnCount++;
@@ -131,7 +131,8 @@ namespace TicTacToeWinF
             else
                 winner = "O";
             //WinnerCellsChangeColor();
-            Form1.PlaySound("WinnerSound");
+            PlaySound("WinnerSound");
+            DisableButtonClick();
             //MessageBox.Show("Congrats, " + winner);
             //this.Hide();
             //Form2 f2 = new Form2();
@@ -147,11 +148,35 @@ namespace TicTacToeWinF
             labelThree.BackColor = color;
         }
 
-        static public void PlaySound(string soundName)
+        public void PlaySound(string soundName)
         {
             System.IO.Stream str = (System.IO.Stream)Properties.Resources.ResourceManager.GetObject(soundName);
             System.Media.SoundPlayer snd = new System.Media.SoundPlayer(str);
             snd.Play();
+        }
+
+        public void DisableButtonClick()
+        {
+            string cellName;
+            PictureBox picture;
+            for (int i = 0; i < 9; i++)
+            {
+                cellName = "pctBox" + (i + 1);
+                picture = (PictureBox)tblPanelGrid.Controls[cellName];
+                picture.Click -= this.pctBox_Click;
+            }           
+        }
+
+        public void EnableButtonClick()
+        {
+            string cellName;
+            PictureBox picture;
+            for (int i = 0; i < 9; i++)
+            {
+                cellName = "pctBox" + (i + 1);
+                picture = (PictureBox)tblPanelGrid.Controls[cellName];
+                picture.Click += this.pctBox_Click;
+            }
         }
     }
 }

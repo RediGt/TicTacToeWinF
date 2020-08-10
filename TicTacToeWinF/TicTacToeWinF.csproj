@@ -127,5 +127,11 @@
   <ItemGroup>
     <None Include="Resources\o-frame-020.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x-frame.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-o-128.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
