@@ -58,7 +58,7 @@ namespace TicTacToeWinF
 
             if (pd.GameMoves[cellNum - 1] == CellType.Free)
             {
-                if (pd.playerXTurn)
+                if (pd.PlayerXTurn)
                 {
                     pd.GameMoves[cellNum - 1] = CellType.Cross;
                     picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("x_frame");
@@ -70,8 +70,8 @@ namespace TicTacToeWinF
                     picture.BackgroundImage = (Image)Properties.Resources.ResourceManager.GetObject("o_frame");
                     PlaySound("ClickSound2");
                 }
-                pd.playerTurnCount++;
-                pd.playerXTurn = !pd.playerXTurn;
+                pd.PlayerTurnCount++;
+                pd.PlayerXTurn = !pd.PlayerXTurn;
 
                 CheckForWin();
                 CheckForDraw();
@@ -124,7 +124,7 @@ namespace TicTacToeWinF
 
         private void CheckForDraw()
         {
-            if (pd.playerTurnCount == 9)
+            if (pd.PlayerTurnCount == 9)
             {
                 MessageBox.Show("No Winner. DRAW");
             }
@@ -133,7 +133,7 @@ namespace TicTacToeWinF
         private void GameOver()
         {
             string winner;
-            if (pd.playerXTurn)
+            if (pd.PlayerXTurn)
                 winner = "O";
             else
                 winner = "X";
@@ -147,8 +147,8 @@ namespace TicTacToeWinF
             pd.InitGameMoves();
             InitializeCells();
             EnableButtonClick();
-            pd.playerTurnCount = 0;
-            pd.playerXTurn = true;
+            pd.PlayerTurnCount = 0;
+            pd.PlayerXTurn = true;
         }
 
         private void ChangeCellsColors(PictureBox labelOne, PictureBox labelTwo, PictureBox labelThree, Color color)
